@@ -22,14 +22,16 @@ public class JasonTscript : MonoBehaviour
         myClass_.SendMessage();
         myClass<Enemy2> myClass00 = new myClass<Enemy2>(new Enemy2());
         myClass00.SendMessage();
-
+        //============================================================================================================
         Genericesclass<GenericesInterface> Genericesclass_ = new Genericesclass<GenericesInterface>(new GenericesInterface());
         Genericesclass_.InterfaceFunction(11);
+        //測試 泛型物件池
         Pool<Transform>.SetPrefeb(prefeb);
         Pool<prefeb>.SetPrefeb(prefeb2);
-        for (int i = 0; i < 10; i++) {
-            Transform instence = Pool<Transform>.GetObjFromPool();
-            insprefeb.Add(instence);
+        for (int i = 0; i < 10; i++)
+        {
+            Transform obj = Pool<Transform>.GetObjFromPool();
+            insprefeb.Add(obj);
         }
         for (int i = 0; i < insprefeb.Count; i++)
         {
@@ -37,44 +39,49 @@ public class JasonTscript : MonoBehaviour
         }
         insprefeb.Clear();
         Debug.Log("count : " + Pool<Transform>.objectQueue.Count);
-       
-        
+
+
     }
     #region 泛型 回傳 及方法
-    public T[] createArry<T>(T Element, T Element2) {
+    public T[] createArry<T>(T Element, T Element2)
+    {
         return new T[] { Element, Element2 };
     }
 
-    public void differentGenerics<T1, T2>(T1 t1, T2 t2) {
+    public void differentGenerics<T1, T2>(T1 t1, T2 t2)
+    {
         Debug.Log(t1 + " " + t2);
 
     }
 
     #endregion
     private void Update()
-    {
+    {   //取得物件
         if (Input.GetKeyDown(KeyCode.X))
             Pool<Transform>.GetObjFromPool();
-    } 
-       
+    }
+
 }
 
 
 #region 泛型 class 條件約束
 //限制條件約束 ， 每當實現 mclass則必續實作 interface
-public class  myClass<T> where T : IEnemy
+public class myClass<T> where T : IEnemy
 {
-    public T  value;// 根據型別做定義
-    public myClass(T value) {
-        this.value = value; 
+    public T value;// 根據型別做定義
+    public myClass(T value)
+    {
+        this.value = value;
     }
-    public void SendMessage() {
+    public void SendMessage()
+    {
         value.damage();//因為判定實作 IEnemy 所以可使用 其方法 
     }
 }
 
-public interface IEnemy {
-    void damage(); 
+public interface IEnemy
+{
+    void damage();
 }
 public class Enemy1 : IEnemy
 {
@@ -89,9 +96,10 @@ public class Enemy2 : IEnemy
     {
         Debug.Log("Enemy2 Attack");
     }
-    public void EnemyGet() {
+    public void EnemyGet()
+    {
         Debug.Log("EnemyGet Attack");
-    
+
     }
 }
 #endregion
@@ -103,19 +111,22 @@ public class Enemy2 : IEnemy
 public class Genericesclass<T> where T : interfaceGenerices<int>, new()
 {
     T value;
-    public Genericesclass (T t) {
+    public Genericesclass(T t)
+    {
         value = t;
 
 
     }
-    public void InterfaceFunction( int index) {
+    public void InterfaceFunction(int index)
+    {
         value.SendMessage(index);
-    
+
     }
 
 }
-public interface  interfaceGenerices<T>{
-    void SendMessage(T t); 
+public interface interfaceGenerices<T>
+{
+    void SendMessage(T t);
 }
 public class GenericesInterface : interfaceGenerices<int>
 {

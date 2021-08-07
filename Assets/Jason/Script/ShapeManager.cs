@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ShapeManager : MonoBehaviour
 {
+    [Tooltip("物件預置物")]
     public List<abstractPrefeb> shapePrefeb = new List<abstractPrefeb>();
     public List<abstractPrefeb> shapeInstantiate = new List<abstractPrefeb>();
     public Button SelectShape;
@@ -14,8 +15,11 @@ public class ShapeManager : MonoBehaviour
     public Button DelectShape;
     public Button DelectCube;
     public Button DelectCapsule;
+    [Tooltip("長度")]
     [SerializeField] int lenghtx;
+    [Tooltip("寬度")]
     [SerializeField] int lenghtz;
+    [Tooltip("間隔")]
     [SerializeField] int spacing;
     void Start()
     {
@@ -27,6 +31,7 @@ public class ShapeManager : MonoBehaviour
         DelectShape.onClick.AddListener(() => { DestoryShape<Sphere>(); });
         DelectCube.onClick.AddListener(() => { DestoryShape<Cube>(); });
         DelectCapsule.onClick.AddListener(() => { DestoryShape<Capsule>(); });
+        ///生成物件 並放入  shapeInstantiate
         for (int i = 0; i < lenghtx; i++)
         {
             for (int j = 0; j < lenghtz; j++)
@@ -112,10 +117,9 @@ public class ShapeManager : MonoBehaviour
             {
                 Debug.Log(hit.collider.name);
                 return true;
-            }
-
+            } 
         }
         return false;
     }
-    
+
 }
