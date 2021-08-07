@@ -6,6 +6,6 @@ public class Sphere : abstractPrefeb
 {
     public override void ShowColor()
     {
-        throw new System.NotImplementedException();
+         
     }
 }

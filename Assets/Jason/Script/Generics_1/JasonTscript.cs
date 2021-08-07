@@ -113,9 +113,7 @@ public class Genericesclass<T> where T : interfaceGenerices<int>, new()
     T value;
     public Genericesclass(T t)
     {
-        value = t;
-
-
+        value = t; 
     }
     public void InterfaceFunction(int index)
     {

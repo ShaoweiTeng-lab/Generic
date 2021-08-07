@@ -54,7 +54,7 @@ public class ShapeManager : MonoBehaviour
         //    Debug.Log(IsShaperUnderMouse<Capsule>());
     }
     /// <summary>
-    /// 利用泛型約束 查詢 物件
+    /// 利用泛型約束 查詢 物件 ex :  : Component 代表該物件 需繼承自 Component
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public void FindShape<T>() where T : abstractPrefeb
@@ -108,7 +108,7 @@ public class ShapeManager : MonoBehaviour
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    bool IsShaperUnderMouse<T>() where T : abstractPrefeb//: Component也可以
+    bool IsShaperUnderMouse<T>() where T : abstractPrefeb
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))

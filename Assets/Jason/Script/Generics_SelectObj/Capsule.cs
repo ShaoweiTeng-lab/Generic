@@ -6,9 +6,6 @@ public class Capsule : abstractPrefeb
 {
     public override void ShowColor()
     {
-        throw new System.NotImplementedException();
-    }
-
-   
-
+         
+    } 
 }
