@@ -55,12 +55,7 @@ public class JasonTscript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
             Pool<Transform>.GetObjFromPool();
-    }
-    Action ac = () =>
-    {
-        Debug.Log("ac");
-
-    };
+    } 
        
 }
 
@@ -104,7 +99,7 @@ public class Enemy2 : IEnemy
 
 
 #region 泛型 interface
-//約束 繼承於某interface 且該interface 
+//約束 繼承於某interface  
 public class Genericesclass<T> where T : interfaceGenerices<int>, new()
 {
     T value;

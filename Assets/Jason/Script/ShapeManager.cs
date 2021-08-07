@@ -99,7 +99,7 @@ public class ShapeManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 設限抓該物件
+    /// 射線抓該物件
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
