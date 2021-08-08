@@ -25,9 +25,9 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
 		get
 		{
 			if (_instance == null)
-			{
-				_instance = UnityEngine.Object.FindObjectOfType(typeof(T)) as T;
-				if (_instance == null)
+			{ 
+				_instance = UnityEngine.Object.FindObjectOfType(typeof(T)) as T;//找到該物件並回傳
+				if (_instance == null)//依然無法找到 新增一個
 				{
 					GameObject obj = new GameObject(typeof(T).Name);
 					_instance = obj.AddComponent<T>();
