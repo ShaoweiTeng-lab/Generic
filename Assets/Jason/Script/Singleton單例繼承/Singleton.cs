@@ -40,26 +40,26 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
 		}
 	}
 
-	#endregion
+    #endregion
 
-	#region Methods
+    #region Methods
 
-	/// <summary>
-	///使用於初始化.
-	/// </summary>
-	/*protected virtual void Awake()
-	{
-		if (_instance == null)
-		{
-			_instance = this as T;
-			DontDestroyOnLoad(gameObject);
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
-	}*/
+    /// <summary>
+    ///使用於初始化.
+    /// </summary>
+    protected  void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this as T;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
-	#endregion
+    #endregion
 
 }
